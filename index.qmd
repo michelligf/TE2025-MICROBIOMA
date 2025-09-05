@@ -1,5 +1,93 @@
 ---
-title: "Course Title"
+title: "TE2025-MICROBIOMA"
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
-Course info & details here
+## Disciplina
+
+Bioinformática aplicada à Estudo de Microbiomas: Diversidade Taxonômica
+por Marcadores Moleculares
+
+## Objetivo do curso:
+
+::: justify
+O curso abrange os fundamentos da análise de microbiomas, desde os
+conceitos básicos de microbioma, metagenômica e metataxonômica, com
+aplicação prática dessas técnicas em diferentes áreas, com ênfase nas
+ciências agrárias. Serão explorados o uso de sistemas Linux e
+ferramentas bioinformáticas essenciais para o processamento e análise de
+dados. Além disso, o curso inclui uma introdução ao R para manipulação
+de dados e visualização gráfica, bem como o controle de qualidade de
+leituras NGS e o pré-processamento de sequências. Também será abordado o
+pipeline DADA2 para a obtenção de sequências de amplicons variantes
+(ASVs) e a classificação taxonômica utilizando diferentes bancos de
+dados.
+:::
+
+## Responsáveis:
+
+::: professores
+::: professor
+![](images/mrandre.jpg){.foto-professor} **Prof. Dr. Marcos Rogério
+André**\
+
+::: redes-sociais
+<a href="http://lattes.cnpq.br/9139899895580513" target="_blank">
+<img src="images/icons/lattes-icon.png" alt="Lattes" class="icone-rede"/>
+</a> <a href="https://orcid.org/0000-0002-1713-5222" target="_blank">
+<img src="images/icons/orcid-icon.png" alt="Orcid" class="icone-rede"/>
+</a>
+<a href="https://www.researchgate.net/profile/Marcos-Andre" target="_blank">
+<img src="images/icons/researchgate-icon.png" alt="ResearchGate" class="icone-rede"/>
+</a>
+<a href="https://www.linkedin.com/in/daniel-guariz-pinheiro-5136a2a/" target="_blank">
+<img src="images/icons/linkedin-icon.png" alt="LinkedIn" class="icone-rede"/>
+</a> <a href="https://github.com/dgpinheiro" target="_blank">
+<img src="images/icons/github-icon.png" alt="GitHub" class="icone-rede"/>
+</a>
+:::
+:::
+
+::: professor
+![](images/dgpinheiro.jpg){.foto-professor} **Prof. Dr. Daniel Guariz
+Pinheiro**\
+
+::: redes-sociais
+<a href="http://lattes.cnpq.br/1127775073652502" target="_blank">
+<img src="images/icons/lattes-icon.png" alt="Lattes" class="icone-rede"/>
+</a> <a href="https://orcid.org/0000-0001-7062-5936" target="_blank">
+<img src="images/icons/orcid-icon.png" alt="Orcid" class="icone-rede"/>
+</a>
+<a href="https://www.researchgate.net/profile/Daniel-Pinheiro-8" target="_blank">
+<img src="images/icons/researchgate-icon.png" alt="ResearchGate" class="icone-rede"/>
+</a>
+<a href="https://www.linkedin.com/in/daniel-guariz-pinheiro-5136a2a/" target="_blank">
+<img src="images/icons/linkedin-icon.png" alt="LinkedIn" class="icone-rede"/>
+</a> <a href="https://github.com/dgpinheiro" target="_blank">
+<img src="images/icons/github-icon.png" alt="GitHub" class="icone-rede"/>
+</a>
+:::
+:::
+
+::: professor
+![](images/migfunnicelli.jpg){.foto-professor} **Dra. Michelli Inácio Gonçalves Funnicelli**\
+
+::: redes-sociais
+<a href="https://www.linkedin.com/in/daniel-guariz-pinheiro-5136a2a/" target="_blank">
+<img src="images/icons/lattes-icon.png" alt="Lattes" class="icone-rede"/>
+</a> <a href="https://orcid.org/0000-0002-5322-0862" target="_blank">
+<img src="images/icons/orcid-icon.png" alt="Orcid" class="icone-rede"/>
+</a>
+<a href="https://www.researchgate.net/profile/Michelli-Funnicelli" target="_blank">
+<img src="images/icons/researchgate-icon.png" alt="LinkedIn" class="icone-rede"/>
+</a>
+<a href="https://www.linkedin.com/in/michelli-funnicelli-b20401171/" target="_blank">
+<img src="images/icons/linkedin-icon.png" alt="LinkedIn" class="icone-rede"/>
+</a> <a href="https://github.com/michelligf" target="_blank">
+<img src="images/icons/github-icon.png" alt="GitHub" class="icone-rede"/>
+</a>
+:::
+:::
+:::

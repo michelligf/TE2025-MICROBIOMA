@@ -1,0 +1,287 @@
+---
+title: "Módulo 03- Introducao "
+author:
+  - "Michelli Inácio Gonçalves Funnicelli"
+  - "Daniel Guariz Pinheiro"
+  - "Marcos Rogério André"
+editor: visual
+---
+
+# Introdução ao R (e RStudio)
+
+# Instalação R e RStudio
+
+# Ambiente R e RStudio<br>
+
+1.  Script: Local onde escrevemos o código (perene);<br>
+2.  Console: Local onde escrevemos o código (temporário) e observamos os resultaydos;<br>
+3.  Ambiente/Histórico: Variaveis/Objetos salvos; Histórico de códigos rodados;<br>
+4.  Arquivos/Plots/Pacotes/Ajuda
+
+![](images/rstudio-interface.png)
+
+Teclas de Atalho
+
+Ctrl+7
+
+# Instalação de pacotes
+
+A forma mais simples para instalacao usa de GUI fornecida pelo Rstudio. Para instalar os pacotes acesse o painel de Packages (Pacotes) ou pressione as teclas Ctrl+7.
+
+![](images/rstudio-painel.png){fig-align="center"}
+
+![Painel de Pacotes Rstudio](images/rstudio-pane.png){fig-align="center"}
+
+No canto superior esquerdo do painel de pacotes, clique no botão Instalar para abrir a caixa de diálogo da Figura 3.2.
+
+![Caixa de dialogo de instalacao de pacotes do Rstudio](images/package-dialog.png){fig-align="center"}
+
+A partir daqui, basta digitar o nome do pacote e clicar em Instalar. Para instalar vários pacotes de uma só vez, informe os nomes separados por vírgulas. O R fará o download e a instalação, deixando os pacotes disponíveis para uso. Se você marcar a opção Instalar dependências, o R também baixará e instalará automaticamente todos os pacotes necessários para que o pacote escolhido funcione.
+
+Como alternativa, é possível instalar pelo console com um comando simples:
+
+```{r}
+install.packages("gganimate")
+```
+
+Isso é equivalente ao procedimento pela interface gráfica. Para obter versões de desenvolvimento — por exemplo, pacotes diretamente do GitHub ou de outros repositórios fora do CRAN — utilize os pacotes devtools ou remotes:
+
+
+```{r}
+# Instale uma vez, se ainda não tiver
+install.packages("remotes")   # ou: install.packages("devtools")
+
+# Instalar a partir do GitHub
+remotes::install_github("thomasp85/gganimate")
+# ou
+devtools::install_github("thomasp85/gganimate")
+```
+
+# Desisntalando Pacotes
+
+# Carregamento de Pacotes
+
+Para carregar um pacote no R e disponibilizar suas funções, utilize as funções library() ou require(), que são semelhantes, mas require() retorna um warning em vez de um erro se o pacote não estiver instalado, sendo preferível em scripts. 
+Após a instalação, os pacotes são carregados na memória da sessão atual para uso, sempre que iniciar uma nova sessao sera necessario carregar o pacote.
+
+```{r}
+library(AATtools)
+```
+
+```{r}
+require(AATtools)
+```
+
+# Descarregamento de Pacotes
+
+Às vezes, um pacote precisa ser descarregado. Isso é bastante simples: desmarcando a caixa de seleção no painel Pacotes do RStudio ou usando a função detach. A função recebe o nome do pacote precedido por "pacote:" entre aspas.
+
+```{r}
+detach("package:gganimate")
+```
+
+
+# Bases do R
+
+## Operadores
+
+
+
+Caracteres especiais capazes de realizar operacoes básicas.
+
+**Operadores aritimeticos:**
+Permite realizar operações básicas de forma direta. Como uma calculadora
+
+| Operador    | Descrição                               |
+| ----------- | --------------------------------------- |
+| `+`         | adição                                  |
+| `-`         | subtração                               |
+| `*`         | multiplicação                           |
+| `/`         | divisão                                 |
+| `^` ou `**` | exponenciação                           |
+| `x %% y`    | módulo (*x mod y*). Ex.: `5 %% 2` é `1` |
+| `x %/% y`   | divisão inteira. Ex.: `5 %/% 2` é `2`   |
+
+Adicao
+```{r}
+1+1
+```
+
+```{r}
+1+5+20
+```
+
+subtração
+```{r}
+
+```
+
+multiplicação
+```{r}
+3*5
+```
+
+divisao
+```{r}
+10/2
+```
+
+exponenciacao
+
+
+
+```{r}
+5 %/% 2
+```
+```{r}
+5 %% 2
+```
+
+
+
+Assim como na matemática, também no R existem regras de precedência de operações com um detalhe: os parênteses sempre tem preferência, ou precedência, sendo usados para colocarmos as operações na ordem desejada, ou seja, as operações entre parênteses tem prioridade sobre outras operações. Veja o exemplo abaixo:
+
+
+```{r}
+(5*20) + 1
+```
+
+
+
+
+**Operadores de comparacao**
+Permite comparar valores e expressões, retorna valores boleanos: Verdadeiro (TRUE; T) ou Falso (FALSE; F).
+
+| **Símbolo** | **Operação**     | **Exemplo** | **Descrição**                                     |
+| ----------- | ---------------- | ----------- | ------------------------------------------------- |
+| `<`         | Menor que        | `a < b`     | Retorna **TRUE** se `a` for menor que `b`.        |
+| `>`         | Maior que        | `a > b`     | Retorna **TRUE** se `a` for maior que `b`.        |
+| `==`        | Igual a          | `a == b`    | Retorna **TRUE** se `a` for igual a `b`.          |
+| `!=`        | Diferente de     | `a != b`    | Retorna **TRUE** se `a` for diferente de `b`.     |
+| `<=`        | Menor ou igual a | `a <= b`    | Retorna **TRUE** se `a` for menor ou igual a `b`. |
+| `>=`        | Maior ou igual a | `a >= b`    | Retorna **TRUE** se `a` for maior ou igual a `b`. |
+
+
+**Operadores logicos**
+
+| **Símbolo** | **Operação**                 | **Exemplo**        | **Descrição**                                                             |
+| ----------- | ---------------------------- | ------------------ | ------------------------------------------------------------------------- |
+| `!x`        | Negação                      | `!TRUE`            | Inverte o valor lógico: `TRUE` ↔ `FALSE`.                                 |
+| `x & y`     | E (funcionamento vetorial)   | `c(T,T) & c(T,F)`  | Compara par a par; retorna `TRUE` onde ambos são `TRUE`.                  |
+| `x && y`    | E (para 1 elemento)          | `(1>0) && (2>1)`   | Avalia apenas o primeiro elemento de cada lado; útil em testes escalares. |
+| `x \| y`    | OU (funcionamento vetorial)  | `c(T,F) \| c(F,F)` | Compara par a par; `TRUE` se pelo menos um for `TRUE`.                    |
+| `x \|\| y`  | OU (para 1 elemento)         | `(1>0) \|\| (2<1)` | Avalia apenas o primeiro elemento de cada lado.                           |
+| `isTRUE(x)` | Checa se é `TRUE`            | `isTRUE(1 > 0)`    | Retorna `TRUE` somente se `x` for `TRUE` escalar (não `NA`, não vetor).   |
+
+Negação 
+
+```{r}
+a <- !TRUE
+print(a)
+```
+```{r}
+# Negar uma condição (use parênteses quando houver comparação)
+x <- 1:6
+!(x > 3)        # TRUE para 1,2,3
+```
+```{r}
+y <- c(10, NA, 20)
+y[!is.na(y)]   # 10 20   (remove NAs)
+```
+
+
+
+```{r}
+b <- !(6 != 6)
+print(b)
+```
+
+
+
+
+
+**Operador de atribuicao**
+Permite atribuir valores a um objeto. São válidos os símbolos '<-' e '='.
+
+```{r}
+# Operadores de atribuição:
+
+a <- 3   # Cria um objeto 'a' de valor 3
+a        # Visualiza o objeto 'a'
+
+b = 2     
+b
+
+a + b    # Operações válidas para o valor interno serão executadas normalmente.
+a - b
+a == b
+```
+
+
+## Variaveis
+
+## Remocao de variaveis
+
+## Tipos de dados
+
+### Vetores
+
+### Dataframes
+
+### Listas
+
+### Matrizes
+
+### Arrays
+
+## Chamando Funcoes
+
+## Documentacao de funcoes
+
+## Dados esquecidos (Missing data)
+
+## Pipes
+
+
+# Lendo dados dentro do R
+
+Lendo arquivos CSVs
+
+
+```{r}
+u <- "https://raw.githubusercontent.com/dickoa/penguins/master/data/penguins_lter.csv"
+penguins_lter <- read.delim(u, sep = ",", header = TRUE, check.names = FALSE)
+
+
+head(penguins_lter)
+```
+
+```{r}
+u <- "https://raw.githubusercontent.com/dickoa/penguins/master/data/penguins_size.csv"
+
+penguins_size <- 
+  read.table(
+    u,
+    sep = ",",
+    header = TRUE,
+    na.strings = c("NA", ""),
+    comment.char = "",        # evita tratar '#' como comentário
+    check.names = FALSE,      # preserva nomes de colunas
+    stringsAsFactors = FALSE, # evita factors
+    fileEncoding = "UTF-8"
+  )
+
+
+head(penguins_size)
+```
+
+
+Diferentemente dos metodos anteriores read nao pode realizar leitura dos dados diretamente a partir de um link, entao os arquivos precisam ser baixados primeiramente.
+```{r}
+
+# u <- "https://figshare.com/ndownloader/files/36554577/Global_dataset.xlsx"
+# 
+# u_enc <- utils::URLencode(u, reserved = TRUE)
+# teste <- download.file(u, destfile = "ExcelExample.xlsx", method = "curl")
+
+```

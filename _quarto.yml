@@ -1,35 +1,66 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - images/**
+    - pdfjs/**
+    - presentations/
 
 website:
-  title: "Course Title"
+  title: "TE2025-MICROBIOMA"
   sidebar:
     background: primary
-    # logo: "images/logo.png"
+    # logo: "images/computer.png"
     pinned: true
-    align: center
+    alignment: center      # era "align"
+    style: docked
     tools:
       - icon: github
-        href: https://github.com/Pakillo/quarto-course-website-template
+        href: https://github.com/michelligf/TE2025-MICROBIOMA
         text: GitHub
-    style: docked
     contents:
       - href: index.qmd
         text: Home
       - href: schedule.qmd
-        text: Schedule
-      - href: materials.qmd
-        text: Materials
-      - href: https://github.com/Pakillo/quarto-course-website-template/discussions
-        text: Forum
+        text: Cronograma
+      - section: Materiais
+        contents:
+          - href: materials.qmd
+            text: Introdução aos Materiais
+          - section: Módulo 01
+            contents:
+              - Metagenômica.pptx
+              - dataset.qmd
+          - section: Módulo 02
+            contents:
+              - module_02.qmd
+          - section: Módulo 03
+            contents:
+              - module_03.qmd
+          - section: Módulo 04
+            contents:
+              - module_04.qmd
+          - section: Módulo 05
+            contents:
+              - module_05.qmd
+          - section: Módulo 06
+            contents:
+              - module_06.qmd
+      - href: https://github.com/michelligf/TE2025-MICROBIOMA/discussions
+        text: Fórum
 
 format:
   html:
     theme: cosmo
-    # css: styles.css
+    css: styles.css
     toc: true
+    code-copy: true
+    code-overflow: wrap
+    code-block-bg: "#f6f6f6"
+    code-block-border-left: "#007acc"
+    highlight-style: dracula
 
 execute:
   freeze: auto
-
+  echo: true
+  eval: false

@@ -1,8 +1,8 @@
 ---
-title: "Course Materials"
+title: "MATERIAIS TE2025-MICROBIOMA"
 ---
 
-[Datasets](data/)
+[Datasets](data/) \
 
-[Slides](slides/)
+[Cadernos](Cadernos/) \
 

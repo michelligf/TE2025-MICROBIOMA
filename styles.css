@@ -1,1 +1,119 @@
-/* css styles */
+.professores {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.professor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Organiza os itens horizontalmente */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  gap: 20px; /* Espaçamento entre os elementos */
+}
+
+
+.foto-professor {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.info-professor {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Alinha os itens na parte superior */
+}
+
+.info-professor h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.info-professor .redes-sociais {
+  display: flex;
+  gap: 15px; /* Espaçamento entre os ícones */
+  margin-top: 20px !important; /* Garante o espaço entre o nome e os ícones */
+}
+
+.redes-sociais a {
+  text-decoration: none; /* Remove sublinhado */
+}
+
+.redes-sociais a img.icone-rede {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.redes-sociais a img.icone-rede:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+
+
+.tick-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+.tick-grid figure {
+  text-align: center;
+  margin: 0;
+}
+
+.tick-grid img {
+  width: 180px;
+  height: 120px;
+  object-fit: contain; /* ou cover */
+  background-color: white;
+}
+
+.tick-grid figcaption {
+  font-size: 0.85em;
+  font-style: italic;
+  margin-top: 5px;
+  text-align: center;
+}
+
+/* Fonte dos blocos de código (chunks {bash} e cercas ```bash) */
+
+/* o <pre> dentro do container não deve ter fundo próprio */
+div.sourceCode > pre {
+  background: transparent !important;
+  margin: 0;
+}
+
+/* garante largura total do container */
+div.sourceCode {
+  display: block;
+  width: 100%;
+  overflow-x: auto; /* mantém o scroll se precisar */
+}
+
+/* === Cercas Markdown ```bash (não-executáveis) === */
+pre.sourceCode,
+pre:not(.sourceCode) {        /* cercas simples sem syntax container */
+  background-color: #f5f5f5 !important;
+  border-left: 4px solid #007acc !important;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+}
+
+/* (opcional) saída dos chunks */
+.cell-output pre {
+  background-color: #f5f5f5 !important;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+}

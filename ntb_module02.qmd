@@ -1,0 +1,648 @@
+---
+title: "Módulo 02"
+author:
+  - "Michelli Inácio Gonçalves Funnicelli"
+  - "Daniel Guariz Pinheiro"
+  - "Marcos Rogério André"
+format:
+  html:
+    toc: true
+    self-contained: false   # permite carregar as imagens da pasta
+execute:
+ freeze: false
+resources:
+  - images/nt_module02-images/**   # garante que a pasta de imagens seja copiada
+editor: visual
+editor_options:
+  chunk_output_type: console
+---
+
+# Sistema Operacional Linux
+
+# Comandos Linux
+
+As três partes principais de um comando são:
+
+**CommandName (nome):** É a regra em si que você quer executar. <br>**Flag (opção):** É um modificador para a operação do comando. Você pode incluí-lo no comando usando um hífen (-) ou dois (–). <br>**Argument (parâmetro):** Serve para adicionar informações ou contexto ao comando.<br>
+
+## Tabela de comandos básicos:
+
+### Tabela de Comandos Linux (Com Categoria)
+
+| Nº  | Categoria                       | Comando     | Função                                                                   |
+|-----|---------------------------------|-------------|--------------------------------------------------------------------------|
+| 1   | Navegação e Diretórios          | `pwd`       | Mostra o caminho completo até o diretório atual                          |
+| 2   | Navegação e Diretórios          | `cd`        | Muda para o diretório especificado                                       |
+| 3   | Navegação e Diretórios          | `ls`        | Lista conteúdos de um diretório                                          |
+| 4   | Navegação e Diretórios          | `mkdir`     | Cria um diretório                                                        |
+| 5   | Navegação e Diretórios          | `rmdir`     | Remove diretórios vazios                                                 |
+| 6   | Navegação e Diretórios          | `tree`      | Exibe a árvore de diretórios e subdiretórios                             |
+| 7   | Gerenciamento de Arquivos       | `cp`        | Copia arquivos e diretórios                                              |
+| 8   | Gerenciamento de Arquivos       | `mv`        | Move ou renomeia arquivos e diretórios                                   |
+| 9   | Gerenciamento de Arquivos       | `ln`        | Cria link simbólico (atalho) de um arquivo ou diretório                  |
+| 10  | Gerenciamento de Arquivos       | `rm`        | Remove arquivos e diretórios                                             |
+| 11  | Gerenciamento de Arquivos       | `touch`     | Cria um arquivo vazio                                                    |
+| 12  | Gerenciamento de Arquivos       | `zip/unzip` | Compacta (`zip`) e descompacta (`unzip`) arquivos                        |
+| 13  | Busca e Filtragem               | `awk`       | Processa e formata texto baseado em padrões (extração de colunas, etc)   |
+|     | Busca e Filtragem               | `locate`    | Localiza arquivos rapidamente (usa banco de dados indexado)              |
+|     | Busca e Filtragem               | `find`      | Procura arquivos em diretórios específicos (busca profunda)              |
+|     | Busca e Filtragem               | `grep`      | Busca padrões dentro de arquivos de texto                                |
+|     | Busca e Filtragem               | `which`     | Mostra o caminho completo de um executável no sistema                    |
+|     | Busca e Filtragem               | `whereis`   | Localiza arquivos binários, fontes e manuais de um comando               |
+|     | Transferência de Arquivos       | `scp`       | Copia arquivos entre computadores via SSH                                |
+|     | Transferência de Arquivos       | `rsync`     | Sincroniza e copia arquivos localmente ou remotamente com eficiência     |
+|     | Transferência de Arquivos       | `wget`      | Faz download de arquivos da internet via HTTP, HTTPS ou FTP              |
+|     | Transferência de Arquivos       | `curl`      | Transfere dados de ou para um servidor via HTTP, FTP e outros protocolos |
+|     | Transferência de Arquivos       | `ftp`       | Conecta-se a servidores FTP para transferir arquivos                     |
+|     | Transferência de Arquivos       | `sftp`      | Transferência segura de arquivos via SSH                                 |
+|     | Exibição e Leitura de Arquivos  | `cat`       | Exibe o conteúdo completo de arquivos                                    |
+|     | Exibição e Leitura de Arquivos  | `head`      | Exibe as primeiras linhas de um arquivo                                  |
+|     | Exibição e Leitura de Arquivos  | `tail`      | Exibe as últimas linhas de um arquivo                                    |
+|     | Exibição e Leitura de Arquivos  | `more`      | Exibe arquivos página por página                                         |
+|     | Exibição e Leitura de Arquivos  | `less`      | Similar ao `more`, mas permite navegação mais flexível                   |
+|     | Exibição e Leitura de Arquivos  | `wc`        | Conta linhas, palavras e caracteres de arquivos                          |
+|     | Edição e Processamento de Texto | `sed`       | Editor de texto em linha (substituição, busca e manipulação)             |
+|     | Edição e Processamento de Texto | `vim`       | Editor de texto avançado em tela cheia                                   |
+|     | Edição e Processamento de Texto | `cut`       | Extrai colunas de arquivos delimitados                                   |
+|     | Edição e Processamento de Texto | `sort`      | Ordena linhas de arquivos                                                |
+|     | Edição e Processamento de Texto | `uniq`      | Remove linhas duplicadas (após ordenação com `sort`)                     |
+|     | Armazenamento e Sistema         | `df`        | Mostra o uso de espaço em disco                                          |
+|     | Armazenamento e Sistema         | `du`        | Mostra o uso de espaço por arquivos e diretórios                         |
+|     | Permissões e Propriedades       | `chmod`     | Altera permissões de arquivos e diretórios                               |
+|     | Permissões e Propriedades       | `chown`     | Altera proprietário e grupo de arquivos e diretórios                     |
+|     | Gerenciamento de Processos      | `top`       | Mostra processos em execução e uso de CPU/RAM em tempo real              |
+|     | Gerenciamento de Processos      | `ps`        | Lista processos ativos                                                   |
+|     | Gerenciamento de Processos      | `kill`      | Encerra (mata) processos                                                 |
+|     | Gerenciamento de Processos      | `time`      | Mede o tempo de execução de comandos/programas                           |
+|     | Rede e Comunicação              | `ping`      | Testa a conectividade com outro servidor                                 |
+|     | Rede e Comunicação              | `hostname`  | Exibe ou altera o nome do host                                           |
+|     | Rede e Comunicação              | `wget`      | Faz download de arquivos da internet                                     |
+|     | Rede e Comunicação / Sistema    | `uname`     | Mostra informações sobre o sistema operacional                           |
+|     | Histórico, Sessão e Limpeza     | `history`   | Mostra comandos executados anteriormente                                 |
+|     | Histórico, Sessão e Limpeza     | `exit`      | Encerra a sessão do terminal                                             |
+|     | Histórico, Sessão e Limpeza     | `clear`     | Limpa a tela do terminal                                                 |
+|     | Instalação de Pacotes           | `apt`       | Gerenciador de pacotes para Debian/Ubuntu (instala, remove, atualiza)    |
+|     | Instalação de Pacotes           | `dpkg`      | Gerencia pacotes Debian manualmente                                      |
+|     | Instalação de Pacotes           | `yum`       | Gerenciador de pacotes para RedHat/CentOS (mais antigo)                  |
+|     | Instalação de Pacotes           | `dnf`       | Gerenciador de pacotes para Fedora e derivados (substitui o `yum`)       |
+|     | Instalação de Pacotes           | `rpm`       | Gerencia pacotes RPM diretamente                                         |
+|     | Instalação de Pacotes           | `snap`      | Gerencia pacotes Snap (sandboxed)                                        |
+|     | Instalação de Pacotes           | `flatpak`   | Gerencia pacotes Flatpak (aplicações universais)                         |
+
+## Atalhos de Teclado no Shell Linux
+
+O shell do Linux possui diversos atalhos de teclado que são importantes para otimizar o uso do terminal. Esses comandos ajudam a controlar o comportamento do terminal em situações específicas.
+
+### Tabela de Atalhos Mais Importantes
+
+| Atalho   | Descrição                                                                                                     |
+|----------|---------------------------------------------------------------------------------------------------------------|
+| Ctrl + C | Interrompe (mata) o processo que está sendo executado no terminal.                                            |
+| Ctrl + Z | Suspende (pausa) o processo atual. Pode ser retomado em primeiro plano com `fg` ou em segundo plano com `bg`. |
+| Ctrl + W | Corta (recorta) uma palavra antes do cursor e envia para a área de transferência.                             |
+| Ctrl + U | Corta tudo da linha antes do cursor e envia para a área de transferência.                                     |
+| Ctrl + K | Corta tudo da linha após o cursor e envia para a área de transferência.                                       |
+| Ctrl + Y | Cola o conteúdo da área de transferência.                                                                     |
+| Ctrl + R | Busca no histórico o último comando que contenha os caracteres digitados.                                     |
+| Ctrl + O | Executa o comando recuperado do histórico.                                                                    |
+| Ctrl + G | Sai da busca no histórico sem executar nenhum comando.                                                        |
+| clear    | Limpa a tela do terminal.                                                                                     |
+| !!       | Executa novamente o último comando.                                                                           |
+| exit     | Encerra a sessão atual do terminal.                                                                           |
+
+## 🏃💻 Vamos praticar!!!
+
+Parte I: Atividades dos comandos básicos
+
+1.  Liste os arquivos de um diretório com o comando `ls`
+
+```{bash}
+ls
+```
+
+2.  Alguns comandos podem receber parâmetros adicionais. Normalmente, é feito pela adição de um `-` ou `--`. Teste o comando `ls -a`, o que ocorreu?
+
+```{bash}
+ls -a
+```
+
+3.  Teste as variações: `ls -l`, `ls -la`, `ls -lat`. O que mudou?
+
+Listar em forma de lista
+
+```{bash}
+ls -l
+```
+
+Listar em forma de lista incluindo arq. ocultos
+
+```{bash}
+ls -la
+```
+
+Listar em forma de lista, incluindo arq. ocultos, em ordem cronológica
+
+```{bash}
+ls -lat
+```
+
+4.  Acesse o manual do comando `ls`, adicionando o parâmetro: `ls --help`.
+
+```{bash}
+ls --help
+```
+
+5.  Teste o comando `pwd`, o que ele informa?
+
+```{bash}
+# pwd = print working directory - mostra o diretório atual
+pwd
+```
+
+6.  Crie um diretório chamado `teste` com o comando `mkdir` (make directory).
+
+```{bash}
+# Criar diretório
+mkdir teste
+```
+
+7.  O comando `cd` (change directory) serve para nos mover na árvore de diretórios.
+
+![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYZr8R923jJUJS4GrelLm04Tz5GwgbTug6jw3e3pDOOZ0uHTTBFFBzLrBT-SR_V1Pyjxcog55t2aNkz_AElcUOppQhZ-47wN-yJATZ_0ZiZsHWO5MNrRpoE__ZkO-c6ykSS3Q2ax0bEYnO/s1600/Untitled.png)
+
+8.  Entre no diretório recém-criado com o comando `cd`.
+
+```{bash}
+cd teste/
+```
+
+9.  Caminhos podem ser **relativos** ou **absolutos**. Volte ao diretório anterior utilizando o caminho **relativo** (`cd ..`) e avance para ela, novamente, utilizando o caminho **absoluto**.
+
+```{bash}
+# Voltar para o diretório anterior:
+cd ../
+
+# Voltar ao "teste" com o caminho absoluto:
+cd /home/<usuario>/teste/
+```
+
+10. Crie um arquivo vazio chamado `arquivo.txt` com o comando `touch`. Liste os conteúdos com o comando `ls`.
+
+```{bash}
+# Criando arquivo vazio
+touch arquivo.txt
+
+# Checando a presença do arquivo
+ls
+```
+
+11. Crie uma cópia do arquivo chamada `arquivo2.txt` com o comando `cp` (copy).
+
+```{bash}
+# Criando cópia do 'arquivo.txt' com o nome 'arquivo2.txt'
+cp arquivo.txt arquivo2.txt
+```
+
+12. Mude o nome do `arquivo.txt` para `arquivo1.txt` com o comando `mv` (move).
+
+```{bash}
+# Renomeando 'arquivo.txt' como 'arquivo1.txt'
+mv arquivo.txt arquivo1.txt
+```
+
+13. Sem sair do diretório atual ("teste"), crie uma cópia (`cp`) do `arquivo1.txt` como `arquivo3.txt` no diretório anterior (seu "home"), então mova-a para o diretório atual com o comando `mv`.
+
+```{bash}
+# Criando uma cópia no diretório anterior:
+cp arquivo1.txt ../arquivo3.txt
+
+# Movendo a cópia para o diretório atual:
+mv ../arquivo3.txt ./
+```
+
+[14. Remova os arquivos criados com o comando **rm** (remove).]{style="color:red"}.
+
+```{bash}
+# Removendo arquivos
+rm arquivo1.txt arquivo2.txt arquivo3.txt
+
+# Ou...
+rm arquivo*
+```
+
+[15. Retorne ao "home" (cd \~) e apague o diretório 'teste'. O rm funciona? Tente o `rmdir` ou `rm` `-rf`.]{style="color:red"}.
+
+```{bash}
+# Removendo diretório 'teste'
+rmdir teste/
+
+# Ou...
+rm -rf teste/
+```
+
+::: callout-important
+Os arquivos apagado no linux via comando não podem ser recuperados!
+:::
+
+**Baixando um conjunto de dados públicode de exemplo:**
+
+Termos SRA
+
+**NCBI Bioproject:** <br> PRJN#### (exemplo: PRJNA1284310) contém todas as descrições de uma unica iniciativa de pesquisa; um projeto está tipicamente relacionado a múltiplas amostras ou conjunto de dados.
+
+**NCBI Biosample:** <br> SAMN#### ou SRS#### (exemplo: SAMN49718651) descreve a fonte do material biológico; cada especime ou amostra é registrada como um único BiosSmple com um único conjunto de atributos. <br>
+
+**SRA Experiment:** <br> SRX#### uma única biblioteca de sequenciamento para uma amostra especifica. <br>
+
+**SRA Run:** <br> SRR#### ou ERR#### (exemplo: SRR34300025) é um arquivo de manifesto dos dados ligados a uma dada biblioteca de sequenciamento (Experiment)
+
+(Veja mais aqui)\[https://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=1284310\]
+
+16. Baixar dados de um projeto SRA:
+
+https://www.ncbi.nlm.nih.gov/ PRJNA1284310
+
+::: {#ntm2-carousel style="max-width: 1000px; margin: auto; position: relative"}
+<img src="images/nt_module02-images/bioproject-01.png" class="ntm2-slide" style="display:block;"/> <img src="images/nt_module02-images/bioproject-02.png" class="ntm2-slide" style="display:none;"/> <img src="images/nt_module02-images/bioproject-03.png" class="ntm2-slide" style="display:none;"/> <img src="images/nt_module02-images/bioproject-04.png" class="ntm2-slide" style="display:none;"/>
+:::
+
+::: {style="text-align:center; margin-top: 10px;"}
+<button id="ntm2-prev" style="font-size:30px;padding:8px;cursor:pointer;">
+
+❮
+
+</button>
+
+<button id="ntm2-next" style="font-size:30px;padding:8px;cursor:pointer;">
+
+❯
+
+</button>
+:::
+
+```{=html}
+<style>
+  .ntm2-slide { width: 100%; height: auto; max-height: 90vh; object-fit: contain; }
+</style>
+```
+```{=html}
+<script>
+(function () {
+  const slides = Array.from(document.querySelectorAll('#ntm2-carousel .ntm2-slide'));
+  if (!slides.length) return;
+  slides.forEach(img => { img.onerror = function () { this.style.display = 'none'; }; });
+
+  let idx = 0;
+  const show = (i) => { slides.forEach(s => s.style.display = 'none'); slides[i].style.display = 'block'; };
+  show(idx);
+  document.getElementById('ntm2-prev').addEventListener('click', () => { idx = (idx - 1 + slides.length) % slides.length; show(idx); });
+  document.getElementById('ntm2-next').addEventListener('click', () => { idx = (idx + 1) % slides.length; show(idx); });
+})();
+</script>
+```
+16.A Usando SRA Toolkit
+
+::: callout-note
+Instale SRA toolkit em sua maquina virtual local Visite o repositório do NCBI SRA Toolkit (https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit) para baixar e instalar o SRA Toolkit apropriado para seu sistema operacional
+:::
+
+Crie uma pasta chamada SRA no sua "home" e entre nela:
+
+```{bash}
+cd ~          # vai para a sua home
+mkdir SRA     # cria o diretório SRA
+cd SRA        # entra no diretório SRA
+```
+
+Recuperando uma número de acesso (SRA Run) do bioprojeto PRJNA1284310
+
+```{bash}
+# sed -n '10p': Pegar a 10ª linha (o decimo elemento da lista de acessos relacionadas ao bioproject)
+
+esearch -db sra -query PRJNA1284310 | efetch -format runinfo | cut -f 1 -d "," |  tail -n +2 | sed -n '10p' > sras.txt
+```
+
+```{bash}
+# shuf -n 1: recupera um numeor de acesso aleatório (recupera um elemento da lista de acessos relacionadas ao bioproject de forma aleatoria)
+
+esearch -db sra -query PRJNA1284310 | efetch -format runinfo | cut -f 1 -d "," |  tail -n +2 | shuf -n 1 > sras.txt
+```
+
+Verificando conteudo do diretorio
+
+```{bash}
+ls -lh 
+```
+
+Convertendo o arquivo sra para formato fastq (separacao do arquivo R1 e R2)
+
+```{bash}
+xargs -n 1 fastq-dump --split-files < sras.txt
+```
+
+Visualizando as primeiras linhas dos arquivos
+
+```{bash}
+head -n 8 *.fastq
+```
+
+**Estrutura de um arquivo fastq**
+
+![(Fonte: http://knowledgebase.bioinformagic.io/ngs_landing.html)](images/rawilluminadatafastqfiles.png)
+
+16.B Usando comando Linux (**Nao recomendado**)
+
+Usando curl
+
+```{bash}
+# a flag -L (ou --location) significa: seguir redirecionamentos HTTP/HTTPS automaticamente.
+# a flag -o (ou --output) serve para definir o nome do arquivo de saída.
+
+curl -L -o SRR34299986.sra ftp://ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByRun/sra/SRR/SRR342/SRR34299986/SRR34299986.sra
+```
+
+Usando wget
+
+```{bash}
+
+wget ftp://ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByRun/sra/SRR/SRR342/SRR34299986/SRR34299986.sra
+```
+
+17. Outras formas de visualizar os arquivos com os comandos: head, tail, more, less e cat. Quais as diferenças?
+
+```{bash}
+# head: primeiras linhas. Por padrão são 10, podem ser específicadas
+head -5 SRR34299962_1.fastq
+
+# tail: head inverso
+tail -5 SRR34299962_1.fastq
+
+# more: visualizar arquivo de forma paginada (aperte 'q' para sair)
+more amostra1.fastq
+
+# less: similar ao 'more', controle com setas ou pg up/pg down. Teste com o parâmetro '-S' para uma visualização mais natural
+less SRR34299962_1.fastq
+less -S SRR34299962_1.fastq
+
+# cat: abre o arquivo do começo ao fim
+cat SRR34299962_1.fastq
+```
+
+18. Use o comando wc e descubra quantas linhas e quantas sequências temos nessas bibliotecas.
+
+```{bash}
+# wc (word count) mostra: linhas(-l)/palavras(-w)/caracteres(-c)
+wc SRR34299962_1.fastq
+wc -l SRR34299962_1.fastq
+```
+
+19. Contando numero de sequencia com a calculadora bc
+
+```{bash}
+echo "$(wc -l < SRR34299962_1.fastq)/4" | bc
+```
+
+Usando awk:
+
+```{bash}
+wc -l SRR34299962_1.fastq | awk '{print $1/4}'
+```
+
+20. Use o comando grep para encontrar padrões nos arquivos. É possível identificar o número de sequências presentes? Dica: Encontre um padrão único!
+
+```{bash}
+# GREP - procura padrão dentro de arquivos de texto.
+# Seq. qualquer:
+grep "AAAAT" SRR34299962_1.fastq
+
+grep "@SRR" SRR34299962_1.fastq  # Isolamento dos IDs
+```
+
+| Comando                                  | Descrição                                                                   |
+|------------------------------------------|-----------------------------------------------------------------------------|
+| `grep "padrão" arquivo.txt`              | Procura a string `"padrão"` no arquivo `arquivo.txt`.                       |
+| `grep -i "padrão" arquivo.txt`           | Faz a busca sem diferenciar maiúsculas de minúsculas.                       |
+| `grep -n "padrão" arquivo.txt`           | Exibe o número da linha onde a correspondência foi encontrada.              |
+| `grep -v "padrão" arquivo.txt`           | Exibe todas as linhas que **não** contêm a string `"padrão"`.               |
+| `grep -r "padrão" diretório/`            | Realiza uma busca recursiva em todos os arquivos dentro do diretório.       |
+| `grep -w "padrão" arquivo.txt`           | Encontra apenas ocorrências da palavra exata `"padrão"`.                    |
+| `grep -A 2 "padrão" arquivo.txt`         | Exibe duas linhas **após** a linha que contém a correspondência.            |
+| `grep -B 2 "padrão" arquivo.txt`         | Exibe duas linhas **antes** da linha que contém a correspondência.          |
+| `grep -C 2 "padrão" arquivo.txt`         | Exibe duas linhas **antes e depois** da linha que contém a correspondência. |
+| `grep -E "padrão1\|padrão2" arquivo.txt` | Busca por ocorrências de `"padrão1"` **ou** `"padrão2"`.                    |
+| `grep -c "padrão" arquivo.txt`           | Conta o número de linhas que contêm a string `"padrão"`.                    |
+
+Com base nos exemplos. 1. Conte numero de sequencia de tamanho de 301
+
+21. Combine comandos em sequência com o "pipe" (\|). Para testar, combine o comando grep com o wc -l.
+
+```{bash}
+# Carregando os IDs e contando as linhas:
+grep "@SRR" SRR34299962_1.fastq | wc -l
+```
+
+22. A saída das execuções podem ser redirecionadas para um arquivo com o \> (sobrescrever) ou \>\> (adicionar). Salve os IDs das sequências de cada biblioteca em um arquivo a parte (IDs1.txt, IDs2.txt), combinando o grep com o redirecionador \>.
+
+```{bash}
+# Carregando os IDs e repassando a um arquivo:
+grep "@SRR" SRR34299962_1.fastq > IDs1.txt
+grep "@SRR" SRR34299962_2.fastq > IDs2.txt
+```
+
+22. O comando cat pode concatenar múltiplos arquivos em sequência. Utilize-o com os IDs e repasse tudo para um único arquivo.
+
+```{bash}
+# Concatenando e salvando IDs de múltiplos arquivos
+cat IDs1.txt IDs2.txt > IDs.txt
+
+# Ou...
+cat IDs*.txt > IDs.txt
+```
+
+23. Vamos observar se há IDs repetidas entre as bibliotecas. Para isso, vamos ordenar o arquivo IDs.txt com o comando sort e combina-lo com o reverso do comando uniq (uniq -d). Salve o resultado em um novo arquivo: IDs_duplicados.txt
+
+```{bash}
+# Ordenando IDs (alfabeticamente) e detectando duplicados:
+sort IDs.txt | uniq -d
+
+# Salvando a saída:
+sort IDs.txt | uniq -d > IDs_duplicados.txt
+```
+
+24. Por fim, vamos rodar o programa pullseq para obter essas sequências e salva-las em um novo arquivo. Contudo, o pullseq não tolera o caractere especial inicial das sequências (Ex. "\>" ou "\@") e, portanto, precisamos remove-lo. Para isso, utilizaremos o editor de texto em linha sed com o parâmetro 's/\@//g' (lê-se: "substitua o '\@' por nada") e salvar a saída no arquivo: IDs_duplicados2.txt.
+
+```{bash}
+# SED é um editor de texto capaz de alterar o conteúdo diretamente na sua saída.
+sed 's/@/AAAAAA/g' IDs_duplicados.txt
+
+# Removendo o '@' e salvando em um novo arquivo:
+sed 's/@//g' IDs_duplicados.txt > IDs_duplicados2.txt
+```
+
+25. Rode o pullseq passando o caminho da biblioteca com as sequências (--input) e do arquivo com os IDs (--names). Repasse a saída para um arquivo (\>).
+
+```{bash}
+# Conheça o 'pullseq' com o comando 'pullseq --help'
+pullseq --help
+
+# Rodando o 'pullseq':
+pullseq --input SRR34299962_1.fastq --names IDs_duplicados2.txt
+
+# Rodando o 'pullseq' e salvando o resultado:
+pullseq --input SRR34299962_1.fastq --names IDs_duplicados2.txt > seqs_duplicadas.fastq
+```
+
+26. Crie um diretório chamado tutorial_linux e repasse os arquivos gerados até aqui para lá, combiando o comando mv com o caractere coringa (\*) + a extensão dos arquivos.
+
+```{bash}
+# Criando o diretório:
+mkdir tutorial_linux
+
+# Movendo arquivos: 
+mv *fastq ./tutorial_linux
+mv *txt ./tutorial_linux
+```
+
+## Estruturas de repeticao (loops)
+
+### For (Para)
+
+É uma declaração de controle de fluxo em programação que permite executar um bloco de código repetidamente, baseado em uma condição específica. Isso é comumente usado quando você já conhece quantas vezes deseja executar o bloco de código. Pode ser utilizado para iterar sobre uma sequência de elementos ou realizar um conjunto de tarefas um número fixo de vezes.
+
+![(Fonte: https://www.geeksforgeeks.org/dsa/for-loop-in-programming/)](images/for.png)
+
+Exemplo:
+
+```{bash}
+for i in 1 2 3 4 5; do echo "Número: $i"; done
+```
+
+Exemplo:
+
+```{bash}
+# Criando um arquivo (lista de nomes)
+echo -e "Ana\nBruno\nCarlos\nDaniela\nEduardo" > nomes.txt
+
+# # Iteração para imprimir cada nome
+for nome in $(cat nomes.txt); do echo "Olá, $nome!"; done
+```
+
+### While (Enqunato)
+
+É uma estrutura de controle de fluxo fundamental em programação, que permite a execução de um bloco de código repetidamente enquanto uma condição especificada permanecer verdadeira. O comando while avalia a condição antes de cada iteração, executa o bloco de código se a condição for verdadeira e termina quando a condição se torna falsa. Esse mecanismo permite flexibilizar interações baseadas em mudanças de condições dentro do programa.
+
+![(Fonte: https://www.geeksforgeeks.org/dsa/while-loop-in-programming/)](images/while.png)
+
+**Comparadores numéricos do Bash:**
+
+| Operador  | Significado    | Inglês           |
+|-----------|----------------|------------------|
+| **`-lt`** | Menor que      | less than        |
+| **`-le`** | Menor ou igual | less or equal    |
+| **`-eq`** | Igual          | equal            |
+| **`-ne`** | Diferente      | not equal        |
+| **`-gt`** | Maior que      | greater than     |
+| **`-ge`** | Maior ou igual | greater or equal |
+
+<br>
+
+Exemplo:
+
+```{bash}
+count=0; while [ $count -lt 5 ]; do echo $count; count=$((count+1)); done
+```
+
+🔑 Diferença prática
+
+**for:** você já sabe o intervalo/lista (ex.: percorrer arquivos, números de 1 a 10, elementos de uma lista).
+
+**while:** você repete até que uma condição deixe de ser verdadeira (ex.: esperar um processo terminar, ler linhas de um arquivo até acabar).
+
+Exemplo prático
+
+```{bash}
+<!-- # --------------------------------------------------------------- -->
+<!-- # Passo 1: Criar um arquivo com 3 acessos (SRR) do projeto SRA -->
+<!-- # --------------------------------------------------------------- -->
+<!-- # - esearch consulta o banco SRA (NCBI) usando o ID do projeto (PRJNA) -->
+<!-- # - efetch retorna as informações no formato runinfo (CSV) -->
+<!-- # - cut extrai a primeira coluna (os SRR, separando por vírgula) -->
+<!-- # - tail -n +2 pula a primeira linha (cabeçalho do CSV) -->
+<!-- # - head -n 3 pega apenas os 3 primeiros acessos -->
+<!-- # - > sras_n3.txt salva o resultado em um arquivo texto -->
+esearch -db sra -query PRJNA1284310 | efetch -format runinfo | cut -f 1 -d "," | tail -n +2 | head -n 3 > sras_n3.txt
+
+<!-- # --------------------------------------------------------------- -->
+<!-- # Passo 2: Iterar sobre cada acesso e baixar os FASTQ -->
+<!-- # --------------------------------------------------------------- -->
+<!-- # - while read srr: lê linha por linha do arquivo "sras_n3.txt" -->
+<!-- # - $srr guarda o identificador (ex.: SRR34299962) -->
+<!-- # - echo informa qual acesso está sendo baixado -->
+<!-- # - curl baixa os arquivos FASTQ (par 1 e 2) -->
+<!-- #   * -L segue redirecionamentos -->
+<!-- #   * -C - permite retomar downloads interrompidos -->
+<!-- #   * -o especifica o nome do arquivo de saída -->
+
+while read srr; do
+  echo "Baixando $srr ..."
+  
+  # Read 1
+  curl -L -C - "https://ftp.sra.ebi.ac.uk/vol1/fastq/${srr:0:6}/${srr: -5}/${srr}/${srr}_1.fastq.gz" -o "${srr}_1.fastq.gz"
+
+  # Read 2
+  curl -L -C - "https://ftp.sra.ebi.ac.uk/vol1/fastq/${srr:0:6}/${srr: -5}/${srr}/${srr}_2.fastq.gz" -o "${srr}_2.fastq.gz"
+  
+done < sras_n3.txt
+```
+
+## Screen
+
+Uma das vantagens de se processar dados em um servidor é a possíbilidade de executar as tarefas em background, ou seja, sem a necessidade de estar diretamente ligado à tarefa, ou mesmo com a interface ligada. Contudo, isso não é feito de forma automática e requer alguns comando específicos.
+
+Uma forma mais simples é a utilização do programa screen. Esse utilitário, permite a abertura de uma tela paralela, com o adicional de possuir múltiplas abas, e que pode ser facilmente "desacoplada" e "acoplada" novamente. Dessa forma, jogando processos longos para o background sem risco de interrompe-los.
+
+Agora, vamos abrir um novo screen nomeado com o comando abaixo:
+
+```{bash}
+screen -S teste
+```
+
+Vamos treinar o ato de sair e voltar, novamente, para o screen. Para isso, utilizaremos primeiro a função de "detach". Pressione as teclas CTRL + A seguido da tecla D. Note que você voltou para a tela sem screen.
+
+Para retornar ao screen, utilize o comando:
+
+```{bash}
+screen -r teste
+```
+
+**Alguns atalhos utéis p/ screen são:**
+
+| **Atalho**       | **Função**                                       |
+|------------------|--------------------------------------------------|
+| CTRL+A + D       | Desacopla *screen*, voltando à tela normal       |
+| CTRL+A + C       | Cria uma nova aba                                |
+| CTRL+A + A       | Retorna para a última aba usada                  |
+| CTRL+A + N       | Avança para a próxima aba                        |
+| CTRL+A + P       | Volta para a aba anterior                        |
+| CTRL+A + \[0-9\] | Vai para aba específica                          |
+| CTRL+A + K       | Mata a aba atual                                 |
+| CTRL+A + Esc     | Libera o cursor, permitindo mover a visualização |
+
+<br>
+
+**Alguns comandos utéis p/ screen são:**
+
+| Comando                    | Função                                                          |
+|----------------------------|-----------------------------------------------------------------|
+| `screen`                   | Abre uma screen não-nomeada                                     |
+| `screen -S <nome>`         | Abre uma screen com o nome `<nome>`                             |
+| `screen -r`                | Retorna para a screen desacoplada, se só existir uma aberta     |
+| `screen -r <nome>`         | Retorna para screen desacoplada `<nome>`                        |
+| `screen -X <nome>`         | Retorna para uma screen acoplada `<nome>` (múltiplas janelas)   |
+| `screen -ls`               | Lista todas as screens abertas, acopladas ou não                |
+| `screen -wipe <nome>`      | Elimina uma screen travada (só se ela estiver "morta")          |
+| `screen -X -S <nome> quit` | Elimina uma screen travada (não-morta)                          |
+| `exit`                     | (Dentro da screen) Fecha aba / Finaliza screen se for única aba |
+| `screen --help`            | Mostra todos os comandos possíveis do screen                    |
+
+## Instalação de programas

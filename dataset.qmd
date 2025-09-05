@@ -1,0 +1,99 @@
+---
+title: "Dataset"
+author:
+  - "Michelli Inácio Gonçalves Funnicelli"
+  - "Daniel Guariz Pinheiro"
+  - "Marcos Rogério André"
+format: html
+---
+
+## Introdução ao Projeto
+
+A parte prática (“Hands-on”) do curso será dedicada ao processamento de dados provenientes do sequenciamento parcial do gene 16S rRNA (região V4, \~250 pb), gerados para o artigo "[Novel symbionts and potential human pathogens excavated from argasid tick microbiomes that are shaped by dual or single symbiosis](https://www.sciencedirect.com/science/article/pii/S2001037022001374)".
+
+Em resumo, o trabalho investigou o microbioma de cinco espécies de carrapatos argasídeos (“soft ticks”): *Argas japonicus*, *Carios vespertilionis*, *Ornithodoros capensis*, *Ornithodoros sawaii* e *Ornithodoros moubata* (este último de criação laboratorial). O objetivo deste estudo foi comparar as comunidades microbianas associadas a cada espécie e estágio de vida, visando identificar simbiontes principais e potenciais patógeno.
+
+<div class="tick-grid">
+
+<figure>
+
+[![](images/standardized_argas_japonicus.png){fig-alt="Fonte: Hu, Liu e Bao (2021)" width="6580"}](https://link.springer.com/article/10.1007/s00436-021-07320-7)
+
+<figcaption>
+
+(a) Argas japonicus
+
+    </figcaption>
+
+    </figure>
+
+<figure>
+
+![](images/standardized_cairos_vespertilionis.png){fig-alt="Fonte: Gilles San Martin" width="6580"}](https://www.gbif.org/occurrence/4994261842)
+
+<figcaption>
+
+(b) Carios vespertilionis
+
+    </figcaption>
+
+    </figure>
+
+<figure>
+
+[![](images/standardized_ornithodors_capensis.png){fig-alt="Fonte: Kwak e Mintram (2017)"}](https://link.springer.com/article/10.1007/s10493-016-0104-8)
+
+<figcaption>
+
+(c) Ornithodoros capensis
+
+    </figcaption>
+
+    </figure>
+
+<figure>
+
+[![](images/standardized_ornithodoros_sawaii.png){fig-alt="Fonte: Matsumura et al. (2024)" width="6580"}](https://www.jstage.jst.go.jp/article/mez/75/3/75_2406/_article)
+
+<figcaption>
+
+(d) Ornithodoros sawaii
+
+    </figcaption>
+
+    </figure>
+
+<figure>
+
+[![](images/standardized_ornithodoros_moubata.png){fig-alt="Fonte: Bakkes et al. (2018)" width="6580"}](https://www.sciencedirect.com/science/article/pii/S1877959X17303801)
+
+<figcaption>
+
+(e) Ornithodoros moubata
+
+    </figcaption>
+
+    </figure>
+
+</div>
+
+-   Aqui temos um resumo do número de bibliotecas geradas no presente estudo:
+
+| Especie             | n   | Male | Female | Nymph |
+|---------------------|-----|------|--------|-------|
+| *A. japonicus*      | 38  | 14   | 20     | 4     |
+| *C. vespertilionis* | 14  | 0    | 6      | 8     |
+| *O. capensis*       | 49  | 18   | 14     | 17    |
+| *O. sawaii*         | 21  | 8    | 6      | 7     |
+| *O. moubata*        | 15  | 5    | 5      | 5     |
+| Total               | 137 | 45   | 51     | 41    |
+
+-   Os identificadores das bibliotecas, revelam os grupos as quais essas representam:
+
+![](images/example_bg.png)
+
+## Análise dos dados
+
+-   Os dados serão analisados seguindo a o seguinte fluxo de trabalho:
+
+![](images/microbiome_flowchart.png)
